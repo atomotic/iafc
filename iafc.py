@@ -21,6 +21,12 @@ parser.add_argument("item", help="IA item id")
 args = parser.parse_args()
 item_name = args.item
 
+
+item = get_item(item_name)
+if not item.metadata:
+    print("ERROR: item with no metadata")
+    sys.exit(1)
+
 repo = Repository(fedora_root, None, None, context={
                   'pcdm': 'http://pcdm.org/models#'})
 
@@ -32,9 +38,6 @@ except:
 
 print(f'+ Container:\t {local_item.uri}')
 
-
-# IA item
-item = get_item(item_name)
 
 # crosswalk metadata from IA json to DC
 metadata_crosswalk = {
