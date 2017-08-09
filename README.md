@@ -19,7 +19,7 @@ To install Fedora Repository follow the [Quick Start](https://wiki.duraspace.org
 
     $ python3 iafc.py {IA_ITEM}
 
-eg. _https://archive.org/details/**TheWebAsHistory**_ ➜ `python3 iafc.py TheWebAsHistory`
+eg. _https://archive.org/details/TheWebAsHistory_ ➜ `python3 iafc.py TheWebAsHistory`
 
 ## Play
 
