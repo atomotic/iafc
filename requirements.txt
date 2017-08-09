@@ -1,0 +1,4 @@
+internetarchive
+git+https://github.com/ghukill/pyfc4.git
+Beautifulsoup4
+requests
