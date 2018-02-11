@@ -8,7 +8,7 @@ import time
 from internetarchive import get_item
 from pyfc4.models import *
 from bs4 import BeautifulSoup
-
+from werkzeug.urls import url_fix
 
 try:
     fedora_root = os.environ["FEDORA"]
@@ -85,9 +85,10 @@ for item_file in item.files:
     content_type = requests.head(url).headers.get('content-type')
     print(f'- Binary:\t {url} ({content_type})')
 
-    local_file = Binary(repo, f'{item_name}/files/{item_file["name"]}')
+    local_file = Binary(
+        repo, f'{item_name}/files/{item_file["name"].replace(" ", "_")}')
 
-    local_file.headers['Content-Location'] = url
+    local_file.headers['Content-Location'] = url_fix(url)
     local_file.headers['Content-Type'] = content_type
 
     local_file.create(specify_uri=True)
